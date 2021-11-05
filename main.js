@@ -227,14 +227,96 @@ let carThree = new Cars("cxcx", 1632, 50);
 
 // console.log(Cars.returnRating(carOne,carThree));
 
-let fruit = new Map([["orang", "orang"] , ["lemon" , "Yellow"], ["strawberry" , "red"] , ["grape" , "purple"] , ["lettuce", "green"]]);
+let fruit = new Map([
+  ["orang", "orang"],
+  ["lemon", "Yellow"],
+  ["strawberry", "red"],
+  ["grape", "purple"],
+  ["lettuce", "green"],
+]);
 
 // fruit.set("sagol" , "sagol");
 
-let onlyFruitKeys = fruit.keys()
+let onlyFruitKeys = fruit.keys();
 
 // for(const fruit of onlyFruitKeys){
 //   trySection.innerHTML += `${fruit} <br>`
 // }
+
+//!
+let arrayOfDogs = [
+  { name: "rexOne", age: 30, type: "typeOne" },
+  { name: "rexTwo", age: 9, type: "typeTwo" },
+  { name: "rexThree", age: 15, type: "typeTwo" },
+];
+
+function dogPromise(arrayObj) {
+  return new Promise((resolve, reject) => {
+    setInterval(() => {
+      let maxObj = 0;
+      let objectOfDog;
+      for (const dogAge of arrayObj) {
+        if (dogAge.age > maxObj) {
+          objectOfDog = dogAge;
+          maxObj = dogAge.age;
+          // console.log(dogAge);
+        }
+      }
+      resolve(objectOfDog);
+      reject("No OLDER DOG");
+    }, 2000);
+  });
+}
+
+dogPromise(arrayOfDogs)
+  .then(
+    (res) => (trySection.innerHTML += `${res.name} , ${res.age} , ${res.type}`)
+  )
+  .catch((rej) => (trySection.innerHTML += `${rej}`));
+
+//!
+
+let counterOfNumProfessors = 0;
+
+class Professor {
+  name;
+  lName;
+  Pay;
+  timeWork;
+  phoneNumber;
+  constructor(_name, _lName, _pay, _timeWork, _phoneNumber) {
+    this.name = _name;
+    this.lName = _lName;
+    this.Pay = _pay;
+    this.timeWork = _timeWork;
+    this.phoneNumber = _phoneNumber;
+    counterOfNumProfessors++
+  }
+  printToLog() {
+    return `Full name: ${this.name} ${this.lName}.
+      Payment per Hour ${this.Pay} .
+      hours in week ${this.timeWork} .
+      Phone number ${this.phoneNumber} `;
+  }
+  payment() {
+    return this.Pay;
+  }
+
+  get getPaymentFun() {
+    return this.payment();
+  }
+  static numberOfProfessors(){
+return counterOfNumProfessors
+  }
+}
+
+let pOne = new Professor("eden", "tasma", 30, 30, "05266582");
+let pTwo = new Professor("Daniel", "tal", 50, 30, "58524852148521");
+let pThree = new Professor("oshra", "tasama", 100, 10, "258429842");
+let pFour = new Professor("oshra", "tasama", 100, 10, "258429842");
+
+
+console.log(pOne.getPaymentFun);
+console.log(Professor.numberOfProfessors());
 
 
