@@ -148,30 +148,35 @@ class Yesov {
   returnString() {
     return `name :${this.nameOfYesove} , number Of People ${this.numOfPepole} `;
   }
-  static returnMaxNum(numOne, numTwo, numThree) {}
+  peopleNew() {
+    return `${this.numOfPepole - 10}`;
+  }
+  static returnMaxNum() {}
 }
 
-// let newOne = new Yesov("nameOne", 45);
-// console.log(newOne.returnString());
+let newOne = new Yesov("nameOne", 45);
+// console.log(newOne.peopleNew());
 
 class Medina extends Yesov {
   type;
-  constructor(_nameOfYesov, _numOfPeople,_Type){
+  constructor(_nameOfYesov, _numOfPeople, _Type) {
     super(_nameOfYesov, _numOfPeople);
-    this.type = _Type
+    this.type = _Type;
   }
-  returnType(){
-    super([returnString]);
-
+  returnType() {
+    return `${super.returnString()} type: ${this.type}`;
+  }
+  childFunction() {
+    return `${super.peopleNew()} , type ${this.type}`;
   }
 }
 
-let medinaOne = new Medina("eden", 50,"Medina");
-console.log(medinaOne.returnType());
+let medinaOne = new Medina("eden", 50, "Medina");
+// console.log(medinaOne.childFunction());
 
 class City extends Yesov {
   returnType() {
-    return `name :${this.nameOfYesove} , number Of People ${this.numOfPepole} City`;
+    return `name :${super.returnString()} , City`;
   }
 }
 
@@ -179,10 +184,57 @@ let nameThree = new City("nameThree", 45);
 
 class Village extends Yesov {
   returnType() {
-    return `name :${this.nameOfYesove} , number Of People ${this.numOfPepole} Medina`;
+    return `${super.returnString()} ,Medina`;
   }
 }
 
-let nameFour = new Village("nameFour", 45);
+let nameFour = new Village("eedede", 45);
 
-console.log(nameThree, nameFour);
+// console.log(nameFour.returnType());
+
+//!
+let counter = 1;
+
+class Cars {
+  brand;
+  year;
+  rating;
+  constructor(_brand, _year, _rating) {
+    this.brand = _brand;
+    this.year = _year;
+    this.rating = _rating;
+    console.log(counter++);
+  }
+  static returnNewest(yearOne, yearTwo) {
+    if (yearOne.year > yearTwo.year) {
+      return yearOne;
+    }
+    {
+      return yearTwo;
+    }
+  }
+  static returnRating(objectOne, objectTwo) {
+    if (objectOne.rating > objectTwo.rating) return objectOne;
+    else return objectTwo;
+  }
+}
+
+let carOne = new Cars("Mazda", 20888, 9);
+let carTwo = new Cars("Toyota", 2010, 10);
+let carThree = new Cars("cxcx", 1632, 50);
+
+// console.log(carOne.year ,carTwo.year );
+
+// console.log(Cars.returnRating(carOne,carThree));
+
+let fruit = new Map([["orang", "orang"] , ["lemon" , "Yellow"], ["strawberry" , "red"] , ["grape" , "purple"] , ["lettuce", "green"]]);
+
+// fruit.set("sagol" , "sagol");
+
+let onlyFruitKeys = fruit.keys()
+
+// for(const fruit of onlyFruitKeys){
+//   trySection.innerHTML += `${fruit} <br>`
+// }
+
+
