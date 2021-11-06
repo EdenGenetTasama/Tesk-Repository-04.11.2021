@@ -290,7 +290,7 @@ class Professor {
     this.Pay = _pay;
     this.timeWork = _timeWork;
     this.phoneNumber = _phoneNumber;
-    counterOfNumProfessors++
+    counterOfNumProfessors++;
   }
   printToLog() {
     return `Full name: ${this.name} ${this.lName}.
@@ -305,8 +305,8 @@ class Professor {
   get getPaymentFun() {
     return this.payment();
   }
-  static numberOfProfessors(){
-return counterOfNumProfessors
+  static numberOfProfessors() {
+    return counterOfNumProfessors;
   }
 }
 
@@ -315,8 +315,38 @@ let pTwo = new Professor("Daniel", "tal", 50, 30, "58524852148521");
 let pThree = new Professor("oshra", "tasama", 100, 10, "258429842");
 let pFour = new Professor("oshra", "tasama", 100, 10, "258429842");
 
-
 console.log(pOne.getPaymentFun);
 console.log(Professor.numberOfProfessors());
 
+// let x = true;
 
+// function checkIfTrue() {
+//   return new Promise((resolve,reject)=>{
+//   if (x) resolve("YES");
+//   else reject("NO")})
+// }
+
+// // checkIfTrue().then(res=>console.log(res)).catch(rej=>console.log(rej))
+
+// async function asyncFun() {
+//   try {
+//     return await checkIfTrue();
+//   } catch (error) {
+//     return error
+//   }
+// }
+
+// asyncFun().then(res=>console.log(res)).catch(rej=>console.log(rej))
+
+function promiseFun() {
+  let randomNum = Math.floor(Math.random() * 11);
+  let UserNumber = Number(prompt("Please Choose a number:"))
+  console.log(randomNum);
+  console.log(UserNumber);
+  return new Promise((resolve, reject) => {
+    randomNum === UserNumber? resolve(`YOU WOM . the RANDOM number is ${randomNum} , and yours is ${UserNumber}`): reject("you lost try again")
+  });
+}
+
+
+promiseFun().then(res=>console.log(res)).catch(rej=>console.log(rej))
